@@ -33,6 +33,9 @@ export const CreateTask = () => {
         if (task.name.length > 50) return toast.error("A task should not have more then 50 characters.");
 
         setTasks((prev) => {
+            if(prev === null){
+                return [task];
+            }
             const list = [...prev, task];
             localStorage.setItem("tasks", JSON.stringify(list));
             return list;
